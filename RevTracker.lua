@@ -1,9 +1,6 @@
 -- Initialize SavedVariables
 RevTrackerDB = RevTrackerDB or {}
 
--- Debug message
-DEFAULT_CHAT_FRAME:AddMessage("|cff00ff00RevTracker loaded.|r")
-
 -- Main frame for events
 local f = CreateFrame("Frame")
 f:RegisterEvent("PLAYER_DEAD")
@@ -35,11 +32,10 @@ end
 -- Event handling
 f:SetScript("OnEvent", function(self, event, ...)
     if event == "PLAYER_DEAD" then
-        local killerName = UnitName("target") -- simplified; proper tracking requires combat log parsing
+        local killerName = UnitName("target") -- Simplified; proper tracking requires combat log parsing
         if killerName then
             AddEnemy(killerName, UnitClass("target"), UnitLevel("target"), "Killed me")
             DEFAULT_CHAT_FRAME:AddMessage("|cffff0000RevTracker:|r Logged "..killerName.." as your killer.")
-            RevTracker_RefreshList()
         end
     elseif event == "PLAYER_TARGET_CHANGED" then
         local tName = UnitName("target")
@@ -53,52 +49,13 @@ f:SetScript("OnEvent", function(self, event, ...)
     end
 end)
 
--- Add current target manually
+-- Button handler for manual add
 function RevTracker_AddTarget()
     local tName = UnitName("target")
     if tName and UnitIsPlayer("target") and not UnitIsFriend("player", "target") then
         AddEnemy(tName, UnitClass("target"), UnitLevel("target"), "Manually added")
         DEFAULT_CHAT_FRAME:AddMessage("|cffff8800RevTracker:|r Added "..tName.." manually.")
-        RevTracker_RefreshList()
     else
         DEFAULT_CHAT_FRAME:AddMessage("|cffff8800RevTracker:|r No valid enemy target.")
-    end
-end
-
--- Scrollable list functions
-local function GetEnemyList()
-    local list = {}
-    for name, data in pairs(RevTrackerDB) do
-        table.insert(list, {name=name, class=data.class, level=data.level, nasty=data.nasty, lastKill=data.lastKill})
-    end
-    table.sort(list, function(a,b) return a.name < b.name end)
-    return list
-end
-
-function RevTracker_RefreshList()
-    local enemies = GetEnemyList()
-    local offset = FauxScrollFrame_GetOffset(RevTrackerScrollFrame)
-
-    for i = 1, 10 do
-        local idx = i + offset
-        local row = _G["RevTrackerRow"..i]
-        if enemies[idx] then
-            local e = enemies[idx]
-            row:Show()
-            _G["RevTrackerRow"..i.."Name"]:SetText(e.name)
-            _G["RevTrackerRow"..i.."Info"]:SetText(string.format("%s L%d N%d", e.class, e.level, e.nasty or 0))
-        else
-            row:Hide()
-        end
-    end
-
-    FauxScrollFrame_Update(RevTrackerScrollFrame, #enemies, 10, 20)
-end
-
-function RevTracker_DeleteEnemy(name)
-    if RevTrackerDB[name] then
-        RevTrackerDB[name] = nil
-        DEFAULT_CHAT_FRAME:AddMessage("|cffff4444RevTracker:|r Removed "..name)
-        RevTracker_RefreshList()
     end
 end
