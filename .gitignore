@@ -1,0 +1,28 @@
+# WoW Addon Gitignore
+
+# Ignore compiled Lua cache (if using Lua compilers)
+*.luac
+
+# Ignore backup files
+*~
+*.bak
+*.swp
+*.swo
+
+# Ignore IDE/project files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
+
+# Ignore logs
+*.log
+
+# Ignore compiled assets if any (optional)
+*.toc~  # sometimes temporary toc backups
+*.xml~  # sometimes temporary xml backups
+*.lua~  # sometimes temporary lua backups
