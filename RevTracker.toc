@@ -1,0 +1,9 @@
+## Interface: 11200
+## Title: RevTracker
+## Notes: Track players who gank you, manage a list, and warn you when they reappear.
+## Author: YourName
+## Version: 0.1
+## SavedVariables: RevTrackerDB
+
+RevTracker.lua
+RevTracker.xml
