@@ -59,3 +59,43 @@ function RevTracker_AddTarget()
         DEFAULT_CHAT_FRAME:AddMessage("|cffff8800RevTracker:|r No valid enemy target.")
     end
 end
+
+-- Utility: Get all enemy names
+local function GetEnemyList()
+    local list = {}
+    for name, data in pairs(RevTrackerDB) do
+        table.insert(list, {name=name, class=data.class, level=data.level, nasty=data.nasty, lastKill=data.lastKill})
+    end
+    table.sort(list, function(a,b) return a.name < b.name end)
+    return list
+end
+
+-- Refresh the scroll list
+function RevTracker_RefreshList()
+    local enemies = GetEnemyList()
+    local offset = FauxScrollFrame_GetOffset(RevTrackerScrollFrame)
+
+    for i = 1, 10 do
+        local idx = i + offset
+        local row = _G["RevTrackerRow"..i]
+        if enemies[idx] then
+            local e = enemies[idx]
+            row:Show()
+            _G["RevTrackerRow"..i.."Name"]:SetText(e.name)
+            _G["RevTrackerRow"..i.."Info"]:SetText(string.format("%s L%d N%d", e.class, e.level, e.nasty or 0))
+        else
+            row:Hide()
+        end
+    end
+
+    FauxScrollFrame_Update(RevTrackerScrollFrame, #enemies, 10, 20)
+end
+
+-- Delete enemy by name
+function RevTracker_DeleteEnemy(name)
+    if RevTrackerDB[name] then
+        RevTrackerDB[name] = nil
+        DEFAULT_CHAT_FRAME:AddMessage("|cffff4444RevTracker:|r Removed "..name)
+        RevTracker_RefreshList()
+    end
+end

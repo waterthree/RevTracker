@@ -51,6 +51,187 @@
                     </OnClick>
                 </Scripts>
             </Button>
+            <ScrollFrame name="RevTrackerScrollFrame" inherits="FauxScrollFrameTemplate" >
+                <Size>
+                    <AbsDimension x="260" y="220"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativePoint="TOPLEFT" x="20" y="-100"/>
+                </Anchors>
+                <Scripts>
+                    <OnVerticalScroll>
+                        FauxScrollFrame_OnVerticalScroll(20, RevTracker_RefreshList)
+                    </OnVerticalScroll>
+                </Scripts>
+            </ScrollFrame>
+
+            <!-- 10 rows -->
+            <Frames>
+                <Frame name="RevTrackerRow1">
+                    <Size><AbsDimension x="260" y="20"/></Size>
+                    <Anchors><Anchor point="TOPLEFT" relativeTo="RevTrackerScrollFrame" x="0" y="0"/></Anchors>
+                    <Layers>
+                        <Layer level="ARTWORK">
+                            <FontString name="RevTrackerRow1Name" inherits="GameFontNormalSmall" />
+                            <FontString name="RevTrackerRow1Info" inherits="GameFontHighlightSmall">
+                                <Anchors><Anchor point="RIGHT" x="-10"/></Anchors>
+                            </FontString>
+                        </Layer>
+                    </Layers>
+                    <Scripts>
+                        <OnMouseDown>
+                            RevTracker_DeleteEnemy(RevTrackerRow1Name:GetText())
+                        </OnMouseDown>
+                    </Scripts>
+                </Frame>
+
+                <!-- Duplicate rows 2–10, each anchored below the previous -->
+                <Frame name="RevTrackerRow2" inherits="RevTrackerRow1">
+                    <Anchors><Anchor point="TOPLEFT" relativeTo="RevTrackerRow1" point="BOTTOMLEFT"/></Anchors>
+                    <Layers>
+                        <Layer level="ARTWORK">
+                            <FontString name="RevTrackerRow2Name" inherits="GameFontNormalSmall" />
+                            <FontString name="RevTrackerRow2Info" inherits="GameFontHighlightSmall">
+                                <Anchors><Anchor point="RIGHT" x="-10"/></Anchors>
+                            </FontString>
+                        </Layer>
+                    </Layers>
+                    <Scripts>
+                        <OnMouseDown>
+                            RevTracker_DeleteEnemy(RevTrackerRow2Name:GetText())
+                        </OnMouseDown>
+                    </Scripts>
+                </Frame>
+                <Frame name="RevTrackerRow3" inherits="RevTrackerRow1">
+                    <Anchors><Anchor point="TOPLEFT" relativeTo="RevTrackerRow1" point="BOTTOMLEFT"/></Anchors>
+                    <Layers>
+                        <Layer level="ARTWORK">
+                            <FontString name="RevTrackerRow2Name" inherits="GameFontNormalSmall" />
+                            <FontString name="RevTrackerRow2Info" inherits="GameFontHighlightSmall">
+                                <Anchors><Anchor point="RIGHT" x="-10"/></Anchors>
+                            </FontString>
+                        </Layer>
+                    </Layers>
+                    <Scripts>
+                        <OnMouseDown>
+                            RevTracker_DeleteEnemy(RevTrackerRow2Name:GetText())
+                        </OnMouseDown>
+                    </Scripts>
+                </Frame>
+                <Frame name="RevTrackerRow4" inherits="RevTrackerRow1">
+                    <Anchors><Anchor point="TOPLEFT" relativeTo="RevTrackerRow1" point="BOTTOMLEFT"/></Anchors>
+                    <Layers>
+                        <Layer level="ARTWORK">
+                            <FontString name="RevTrackerRow2Name" inherits="GameFontNormalSmall" />
+                            <FontString name="RevTrackerRow2Info" inherits="GameFontHighlightSmall">
+                                <Anchors><Anchor point="RIGHT" x="-10"/></Anchors>
+                            </FontString>
+                        </Layer>
+                    </Layers>
+                    <Scripts>
+                        <OnMouseDown>
+                            RevTracker_DeleteEnemy(RevTrackerRow2Name:GetText())
+                        </OnMouseDown>
+                    </Scripts>
+                </Frame>
+                <Frame name="RevTrackerRow5" inherits="RevTrackerRow1">
+                    <Anchors><Anchor point="TOPLEFT" relativeTo="RevTrackerRow1" point="BOTTOMLEFT"/></Anchors>
+                    <Layers>
+                        <Layer level="ARTWORK">
+                            <FontString name="RevTrackerRow2Name" inherits="GameFontNormalSmall" />
+                            <FontString name="RevTrackerRow2Info" inherits="GameFontHighlightSmall">
+                                <Anchors><Anchor point="RIGHT" x="-10"/></Anchors>
+                            </FontString>
+                        </Layer>
+                    </Layers>
+                    <Scripts>
+                        <OnMouseDown>
+                            RevTracker_DeleteEnemy(RevTrackerRow2Name:GetText())
+                        </OnMouseDown>
+                    </Scripts>
+                </Frame>
+                <Frame name="RevTrackerRow6" inherits="RevTrackerRow1">
+                    <Anchors><Anchor point="TOPLEFT" relativeTo="RevTrackerRow1" point="BOTTOMLEFT"/></Anchors>
+                    <Layers>
+                        <Layer level="ARTWORK">
+                            <FontString name="RevTrackerRow2Name" inherits="GameFontNormalSmall" />
+                            <FontString name="RevTrackerRow2Info" inherits="GameFontHighlightSmall">
+                                <Anchors><Anchor point="RIGHT" x="-10"/></Anchors>
+                            </FontString>
+                        </Layer>
+                    </Layers>
+                    <Scripts>
+                        <OnMouseDown>
+                            RevTracker_DeleteEnemy(RevTrackerRow2Name:GetText())
+                        </OnMouseDown>
+                    </Scripts>
+                </Frame>
+                <Frame name="RevTrackerRow7" inherits="RevTrackerRow1">
+                    <Anchors><Anchor point="TOPLEFT" relativeTo="RevTrackerRow1" point="BOTTOMLEFT"/></Anchors>
+                    <Layers>
+                        <Layer level="ARTWORK">
+                            <FontString name="RevTrackerRow2Name" inherits="GameFontNormalSmall" />
+                            <FontString name="RevTrackerRow2Info" inherits="GameFontHighlightSmall">
+                                <Anchors><Anchor point="RIGHT" x="-10"/></Anchors>
+                            </FontString>
+                        </Layer>
+                    </Layers>
+                    <Scripts>
+                        <OnMouseDown>
+                            RevTracker_DeleteEnemy(RevTrackerRow2Name:GetText())
+                        </OnMouseDown>
+                    </Scripts>
+                </Frame>
+                <Frame name="RevTrackerRow8" inherits="RevTrackerRow1">
+                    <Anchors><Anchor point="TOPLEFT" relativeTo="RevTrackerRow1" point="BOTTOMLEFT"/></Anchors>
+                    <Layers>
+                        <Layer level="ARTWORK">
+                            <FontString name="RevTrackerRow2Name" inherits="GameFontNormalSmall" />
+                            <FontString name="RevTrackerRow2Info" inherits="GameFontHighlightSmall">
+                                <Anchors><Anchor point="RIGHT" x="-10"/></Anchors>
+                            </FontString>
+                        </Layer>
+                    </Layers>
+                    <Scripts>
+                        <OnMouseDown>
+                            RevTracker_DeleteEnemy(RevTrackerRow2Name:GetText())
+                        </OnMouseDown>
+                    </Scripts>
+                </Frame>
+                <Frame name="RevTrackerRow9" inherits="RevTrackerRow1">
+                    <Anchors><Anchor point="TOPLEFT" relativeTo="RevTrackerRow1" point="BOTTOMLEFT"/></Anchors>
+                    <Layers>
+                        <Layer level="ARTWORK">
+                            <FontString name="RevTrackerRow2Name" inherits="GameFontNormalSmall" />
+                            <FontString name="RevTrackerRow2Info" inherits="GameFontHighlightSmall">
+                                <Anchors><Anchor point="RIGHT" x="-10"/></Anchors>
+                            </FontString>
+                        </Layer>
+                    </Layers>
+                    <Scripts>
+                        <OnMouseDown>
+                            RevTracker_DeleteEnemy(RevTrackerRow2Name:GetText())
+                        </OnMouseDown>
+                    </Scripts>
+                </Frame>
+                <Frame name="RevTrackerRow10" inherits="RevTrackerRow1">
+                    <Anchors><Anchor point="TOPLEFT" relativeTo="RevTrackerRow1" point="BOTTOMLEFT"/></Anchors>
+                    <Layers>
+                        <Layer level="ARTWORK">
+                            <FontString name="RevTrackerRow2Name" inherits="GameFontNormalSmall" />
+                            <FontString name="RevTrackerRow2Info" inherits="GameFontHighlightSmall">
+                                <Anchors><Anchor point="RIGHT" x="-10"/></Anchors>
+                            </FontString>
+                        </Layer>
+                    </Layers>
+                    <Scripts>
+                        <OnMouseDown>
+                            RevTracker_DeleteEnemy(RevTrackerRow2Name:GetText())
+                        </OnMouseDown>
+                    </Scripts>
+                </Frame>
+                <!-- ... repeat up to Row10 -->
+            </Frames>
         </Frames>
     </Frame>
 </Ui>
